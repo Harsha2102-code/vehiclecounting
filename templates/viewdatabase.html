@@ -1,0 +1,117 @@
+{% load static %}
+<html>
+    <head>
+        <title>videos</title>
+        
+     <style>
+     *{
+
+       box-sizing:border-box;
+     }
+     
+     nav{
+       display:flex;
+       justify-content:space-around;
+       align-items:center;
+       position :fixed;
+       top:0;
+       left:0;
+       width:100%;
+       background-color:rgb(160, 218, 210);
+       box-shadow: 5px 10px 30px rgba(0,0,0,0.02);
+       z-index:1;
+     
+     }
+     
+     .menu{
+       list-style:none;
+       display:flex;
+     }
+     .menu li a{
+       height:40px;
+       line-height:43px;
+       margin:3px;
+       padding : 0px 22px;
+       display: flex;
+       font-size:0.8em;
+       text-transform:uppercase;
+       font-weight:500;
+       letter-spacing:1px;
+       color:rgb(0, 0, 0);
+     
+     }
+      
+     a{
+       text-decoration:none;
+     }
+     
+     
+     
+     .content{
+       
+       width:90%;
+       justify-content:space-around;
+       align-items:center;
+       position:absolute;
+       left:50%;
+       right:50%;
+       transform:translate(-50%,-50%)
+     
+     }
+     
+      
+     
+     
+     
+     
+      
+     
+     
+     .menu li a:hover{
+       background-color:#23cdaf;
+       color:rgb(149, 131, 228);
+       box-shadow:5px 10px 30px rgba(24,139,119,0.2);
+       transition:all ease 0.2s;
+     } 
+    </style>
+</head>
+<body bgcolor="black">
+     <!-- MENU -->
+    
+     <section id ='main'>
+          <nav>
+               <span class="menu-space"></span>
+               <ul class="menu">
+                    <li><a href="/" >Home</a></li>
+                    
+                    
+               </ul>
+          </nav>
+     </section>
+
+               
+
+               
+
+
+
+
+     <!-- HOME -->
+
+
+
+
+   
+
+<div >
+{% for i in listofVideos %} 
+<video width ='300' controls>
+    <source  src={{i}} type="video/mp4">
+   </video> 
+{{i}} <br>
+{% endfor%}
+
+<h3>The list of uploaded videoss: {{listofVideos}}</h3>
+</div>
+</body>
+</html>

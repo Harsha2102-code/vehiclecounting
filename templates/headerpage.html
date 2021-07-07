@@ -1,0 +1,201 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <meta charset="UTF-8">
+     <title>upload a video</title>
+     <style>
+     *{
+
+       box-sizing:border-box;
+     }
+     #bg
+     {
+      background-repeat:no-repeat ;
+       background-size:1800px 900px;
+       background-position: top;
+       background-attachment: fixed;
+       background-image: url('{% static 'img/traffic.png' %}') ; ;
+     }
+     body{
+       margin:0px;
+       padding:0px;
+       font:poppins;
+        background:linear-gradient(132deg,red,green,blue);
+        background:-moz-linear-gradient(132deg,red,green,blue);
+        background:-webkit-linear-gradient(132deg,red,green,blue);
+        background:-o-linear-gradient(132deg,red,green,blue);
+        background:-ms-linear-gradient(132deg,red,green,blue);
+        
+        background-size:900% 900%;
+        animation:li 30s ease infinite;
+        }
+        @keyframes li{
+          0%{background-position:0% 50%;}
+          50%{background-position:100% 50%;}
+          100%{background-position:0% 50%;}
+          }
+        
+        
+         
+     nav{
+       display:flex;
+       justify-content:space-around;
+       align-items:center;
+       position :fixed;
+       top:0;
+       left:0;
+       width:100%;
+       background-color:white;
+       box-shadow: 5px 10px 30px rgba(0,0,0,0.02);
+       z-index:1;
+     
+     }
+     
+     .menu{
+       list-style:none;
+       display:flex;
+     }
+     .menu li a{
+       height:40px;
+       line-height:43px;
+       margin:3px;
+       padding : 0px 22px;
+       display: flex;
+       font-size:0.8em;
+       text-transform:uppercase;
+       font-weight:500;
+       letter-spacing:1px;
+       color:grey;
+     
+     }
+      
+     a{
+       text-decoration:none;
+     }
+     
+     
+     .image img{
+       width:100%;
+       
+       object-fit:contain;
+     }
+     .content{
+       
+       width:90%;
+       justify-content:space-around;
+       align-items:center;
+       position:absolute;
+       left:50%;
+       right:50%;
+       transform:translate(-50%,-50%)
+     
+     }
+     .diff{
+      width:90%;
+      justify-content:space-around;
+      align-items:center;
+      
+      position:absolute;
+      left:50%;
+      right:50%;
+      transform:translate(-50%,-50%);
+      bottom:200px
+     }
+     .main-text{
+       width:500px;
+       margin-left:20px;
+       color:#f0f5f8;
+
+       text-shadow: 1px 1px 1px rgb(100, 230, 25),
+       2px 2px 1px red;
+     }
+     
+     .main-text p{
+     
+       color:#f0f5f8;
+       
+     }
+     
+      form {
+          display: block;
+          margin-top: 0em;
+      }
+      element.style {
+          padding-left: 500px;
+      }
+     
+     
+     .menu li a:hover{
+       background-color:#23cdaf;
+       color:rgb(149, 131, 228);
+       box-shadow:5px 10px 30px rgba(24,139,119,0.2);
+       transition:all ease 0.2s;
+     } 
+   </style>
+     <!-- MAIN CSS -->
+
+</head>
+<body >
+
+  
+     <!-- MENU -->
+    
+     <section id ='main'>
+          <nav>
+               <span class="menu-space"></span>
+               <ul class="menu">
+                    <li><a href="/" >Home</a></li>
+                    <li><a href="{% url 'calc:viewdatabase' %}" >View gallery</a></li>
+                    
+               </ul>
+          </nav>
+     </section>
+
+               
+
+               
+</header>
+</div>
+
+
+     <!-- HOME -->
+
+
+<div class="diff">
+     <h2>Uplaod video for counting</h2>
+
+    
+    <br>
+   
+    <form method="post" enctype="multipart/form-data" action="counter">
+  
+ {% csrf_token %}
+ <div ><label for="fname">Upload video File Here:</label> </div> <input name="filePath" type="file" style="border-top-width:20px;
+ padding-top:50px;"><br><br>
+ <br>
+ 
+ 
+ <input type="submit" value="Submit" >
+ {% if filePathName %}
+ <input type="hidden" value="Submit" >
+ {% endif %}
+</div>
+ <div class="call">
+ <video width ='300'  controls style="padding-top:450px;">
+  <source src={{filePathName}} type="video/mp4">
+ </video> 
+ {{filePathName}}
+ <h2 >no.of vehicles:{{vehicle_count}}</h2>
+</form>
+<br>
+
+</div>
+
+     
+  
+  
+
+</body>
+</html>
